@@ -8,6 +8,36 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function anagrams(stringA, stringB) {}
+// solution #1: my solution
+// function anagramFilt(str) {
+//   const trans = str.toLowerCase().split('').sort();
+//   const filt = trans.filter((item) => item !== ' ' && item !== '!').join('');
+//   return filt;
+// }
+
+// function anagrams(stringA, stringB) {
+//   console.log(anagramFilt(stringA));
+//   console.log(anagramFilt(stringB));
+//   return (anagramFilt(stringA) === anagramFilt(stringB));
+// }
+
+// solution #2: author
+// helper function
+function buildCharMap(str) {
+  const charMap = {};
+  
+  // regex and toLowerCase
+  for (let char of str.replace(/[^\w]/g, '').toLowerCase()) {
+    charMap[char] = charMap[char] + 1 || 1;
+  }
+
+  return charMap;
+}
+
+function anagrams(stringA, stringB) {
+
+}
+
+anagrams('Rail safety', 'fairy tales');
 
 module.exports = anagrams;

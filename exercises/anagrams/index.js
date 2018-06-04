@@ -40,7 +40,6 @@
 
 //   console.log(aCharMap);
   
-
 //   if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
 //     return false;
 //   }
@@ -58,12 +57,12 @@
 
 // solution #2: author
 // helper function
-function buildCharMap(str) {
-  
+function cleanString(str) {
+  return str.replace(/[^\w]/g).toLowerCase().split('').sort().join('');
 }
 
 function anagrams(stringA, stringB) {
-  
+  return cleanString(stringA) === cleanString(stringB)
 }
 
 anagrams('Rail safety', 'fairy tales');

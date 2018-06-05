@@ -18,7 +18,12 @@ class Queue {
   }
 
   peek() {
-    return this.data.slice(-1);
+    // return this.data.slice(-1);
+    return this.data[this.data.length - 1];
+  }
+
+  print() {
+    console.log(this.data);
   }
 }
 

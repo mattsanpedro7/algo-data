@@ -19,16 +19,35 @@
 //   return seq[n];
 // }
 
+function memoize(fn) {
+  // a record of all previous calls
+  const cache = {};
+  // ...args => don't know how many arguments this will receive
+  return function(...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+
+    // apply?  MDN
+    const result = fn.apply(this, args);
+    cache[args] = result;
+
+    return result;
+  };
+}
+
+fib = memoize(fib);
+console.log(fib(15));
+
 // solution #2: recursive
 // exponential time solution
-let count = 0;
+// let count = 0;
 function fib(n) {
-  count++;
+  // count++;
   // base case
   if (n < 2) {
     return n;
-    console.log('count', count);
-    
+    // console.log('count', count);
   }
 
   // n=2    1     +    0    = 1
@@ -36,9 +55,11 @@ function fib(n) {
   // n=4    2     +    1    = 3
   // n=5    3     +    2    = 5
   // n=6    5     +    3    = 8
+
+  // inside here is a ref to the memoize version
   return fib(n-1) + fib(n-2);
 }
 
-console.log(fib(15));
+// console.log(fib(15));
 
 module.exports = fib;

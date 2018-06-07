@@ -34,6 +34,9 @@ class LinkedList {
   }
 
   getLast() {
+    if (!this.head) {
+      return null;
+    }
     let tempNode = this.head;
     while (tempNode.next) {
       tempNode = tempNode.next;
@@ -44,6 +47,14 @@ class LinkedList {
 
   clear() {
     this.head = null;
+  }
+
+  removeFirst() {
+    let tempNode = this.head;
+    // tempNode = 
+    console.log(this.head);
+    // make the next node head
+    this.head = this.head.next;
   }
 
   insertLast(record) {
@@ -76,16 +87,18 @@ class LinkedList {
 
 function main() {
   const LL = new LinkedList();
-  LL.insertFirst('a');
-  // LL.insertFirst('Hello');  
-  // LL.insertFirst('How are you?');  
+  // LL.insertFirst('a');
+  LL.insertFirst('Hello');  
+  LL.insertFirst('How are you?');  
 
-  // LL.insertLast('Fine thank you');
-  LL.insertLast('b');
+  LL.insertLast('Fine thank you');
+  // LL.insertLast('b');
   
   // console.log('GetFirst:', LL.getFirst());
   // console.log('GetLast:', LL.getLast());  
   
+  LL.print();  
+  LL.removeFirst();
   LL.print();
   // console.log(JSON.stringify(LL));
   

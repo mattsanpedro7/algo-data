@@ -88,34 +88,26 @@ class LinkedList {
     }
   }
 
-  getAt(index) {
+  isIndexIn(index) {
     // determine size of linkedlist
-    let count = 0;
-    let tempNode = this.head;
-    while (tempNode) {
-      count++;
-      tempNode = tempNode.next;
-    }
-    console.log(count);
+    const count = this.size(index);
     
     // exit if index out of bounds
     if (index < 0 || index >= count) {
       console.log('index is out of bounds');
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  getAt(index) {
+    if (!this.isIndexIn(index)) {
       return null;
     }
-
-    // // exit if no index provided
-    // if (!index) {
-    //   console.log('please input index');
-    //   return null;
-    // }
     
     // loop through
-    tempNode = this.head;
-    
-    console.log('index:', index);
-    
-
+    let tempNode = this.head;
     let parent = null;
     for (let i = 0; i <= index; i++) {
       parent = tempNode;
@@ -124,6 +116,15 @@ class LinkedList {
     }
     
     return parent;
+  }
+
+  removeAt(index) {
+    // if 1st in list, set head to next
+    // if more than one
+    let tempNode = this.getAt(index-1);
+    console.log('removeAt:', tempNode.next.next);
+    
+
   }
 
   print() {
@@ -158,7 +159,8 @@ function main() {
   
   // LL.clear();
 
-  LL.getAt(1);
+  // LL.getAt(2);
+  LL.removeAt(0);
 
   LL.print();
   

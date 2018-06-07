@@ -112,19 +112,32 @@ class LinkedList {
     for (let i = 0; i <= index; i++) {
       parent = tempNode;
       tempNode = tempNode.next;
-      console.log('ITER:', i, parent);
     }
     
+    console.log('GETAT:', parent);
     return parent;
   }
 
   removeAt(index) {
-    // if 1st in list, set head to next
-    // if more than one
-    let tempNode = this.getAt(index-1);
-    console.log('removeAt:', tempNode.next.next);
-    
+    // out of bounds edge cases
+    if (!this.isIndexIn(index)) {
+      return null;
+    }
 
+    // if 1st in list, set head to next
+    let tempNode;
+    if (index === 0) {
+      this.head = this.head.next;
+    } else if (index === this.size(this.head) - 1 ) {
+      // if last in list, set previous next to null    
+      tempNode = this.getAt(index - 1);
+      tempNode.next = null;
+    } else {
+      // if neither first or last node
+      tempNode = this.getAt(index - 1);
+      console.log('last node index:', index, 'node:', tempNode);
+      tempNode.next = tempNode.next.next;
+    }
   }
 
   print() {
@@ -160,9 +173,14 @@ function main() {
   // LL.clear();
 
   // LL.getAt(2);
-  LL.removeAt(0);
+
+  console.log(LL.size());
+  
 
   LL.print();
+  LL.removeAt(1);
+  LL.print();
+
   
 }
 main();

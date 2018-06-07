@@ -15,7 +15,7 @@ class LinkedList {
   }
 
   insertFirst(record) {
-    console.log('HEAD:', this.head, 'DATA:', record);
+    // console.log('HEAD:', this.head, 'DATA:', record);
     this.head = new Node(record, this.head);
   }
 
@@ -38,8 +38,12 @@ class LinkedList {
     while (tempNode.next) {
       tempNode = tempNode.next;
     }
-    
+
     return tempNode;
+  }
+
+  clear() {
+    this.head = null;
   }
 
   insertLast(record) {
@@ -52,7 +56,7 @@ class LinkedList {
         // console.log(tempNode.data);
         
       }
-      console.log('LAST node', tempNode);
+      // console.log('LAST node', tempNode);
       tempNode.next = new Node(record, null);
     }
   }
@@ -79,12 +83,13 @@ function main() {
   // LL.insertLast('Fine thank you');
   LL.insertLast('b');
   
-  console.log('GetFirst:', LL.getFirst());
-  console.log('GetLast:', LL.getLast());  
+  // console.log('GetFirst:', LL.getFirst());
+  // console.log('GetLast:', LL.getLast());  
   
   LL.print();
-  console.log(JSON.stringify(LL));
+  // console.log(JSON.stringify(LL));
   
+  LL.clear();
 }
 main();
 

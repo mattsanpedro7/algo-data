@@ -57,6 +57,22 @@ class LinkedList {
     this.head = this.head.next;
   }
 
+  removeLast() {
+    let tempNode = this.head;
+    if (!this.head) {
+      return null;
+    } else if (this.head && !tempNode.next) {
+      this.head = null;
+    } else {
+      while (tempNode.next.next) {
+        tempNode = tempNode.next;
+      }
+  
+      // console.log(tempNode);
+      tempNode.next = null;
+    } 
+  }
+
   insertLast(record) {
     let tempNode = this.head;
     if (tempNode === null) {
@@ -96,9 +112,10 @@ function main() {
   
   // console.log('GetFirst:', LL.getFirst());
   // console.log('GetLast:', LL.getLast());  
+  // LL.removeFirst();
   
   LL.print();  
-  LL.removeFirst();
+  LL.removeLast();
   LL.print();
   // console.log(JSON.stringify(LL));
   

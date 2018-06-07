@@ -18,7 +18,7 @@ describe('A Node', () => {
   });
 });
 
-describe.skip('Insert First', () => {
+describe('Insert First', () => {
   test('appends a node to the start of the list', () => {
     const l = new List();
     l.insertFirst(1);
@@ -40,7 +40,7 @@ describe('Size', () => {
   });
 });
 
-describe.skip('GetFirst', () => {
+describe('GetFirst', () => {
   test('returns the first element', () => {
     const l = new List();
     l.insertFirst(1);
@@ -50,7 +50,7 @@ describe.skip('GetFirst', () => {
   });
 });
 
-describe.skip('GetLast', () => {
+describe('GetLast', () => {
   test('returns the last element', () => {
     const l = new List();
     l.insertFirst(2);

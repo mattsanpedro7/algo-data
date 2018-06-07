@@ -19,15 +19,6 @@ class LinkedList {
     this.head = new Node(record, this.head);
   }
 
-  insertLast(record) {
-    let tempNode = this.head;
-    while (tempNode) {
-      tempNode = tempNode.next;
-    }
-    console.log('LAST node', tempNode);
-    
-  }
-
   size() {
     let count = 0;
     let tempNode = this.head;
@@ -38,12 +29,41 @@ class LinkedList {
     return count;
   }
 
+  getFirst() {
+    return this.head;
+  }
+
+  getLast() {
+    let tempNode = this.head;
+    while (tempNode.next) {
+      tempNode = tempNode.next;
+    }
+    
+    return tempNode;
+  }
+
+  insertLast(record) {
+    let tempNode = this.head;
+    if (tempNode === null) {
+      this.insertFirst(record);
+    } else {
+      while (tempNode.next) {
+        tempNode = tempNode.next;
+        // console.log(tempNode.data);
+        
+      }
+      console.log('LAST node', tempNode);
+      tempNode.next = new Node(record, null);
+    }
+  }
+
+
   print() {
     let count = 0;
     let tempNode = this.head;
     while (tempNode) {
       count++;
-      console.log('Position:', count, '/// Node:', tempNode.data);
+      console.log('Position:', count, '/// Data:', tempNode.data);
       tempNode = tempNode.next;
     }
     
@@ -52,13 +72,19 @@ class LinkedList {
 
 function main() {
   const LL = new LinkedList();
-  LL.insertFirst('Hey');
-  LL.insertFirst('Hello');  
-  LL.insertFirst('How are you?');  
+  LL.insertFirst('a');
+  // LL.insertFirst('Hello');  
+  // LL.insertFirst('How are you?');  
 
-  LL.insertLast('Fine thank you');
-
+  // LL.insertLast('Fine thank you');
+  LL.insertLast('b');
+  
+  console.log('GetFirst:', LL.getFirst());
+  console.log('GetLast:', LL.getLast());  
+  
   LL.print();
+  console.log(JSON.stringify(LL));
+  
 }
 main();
 

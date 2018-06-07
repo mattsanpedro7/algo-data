@@ -88,6 +88,43 @@ class LinkedList {
     }
   }
 
+  getAt(index) {
+    // determine size of linkedlist
+    let count = 0;
+    let tempNode = this.head;
+    while (tempNode) {
+      count++;
+      tempNode = tempNode.next;
+    }
+    console.log(count);
+    
+    // exit if index out of bounds
+    if (index < 0 || index >= count) {
+      console.log('index is out of bounds');
+      return null;
+    }
+
+    // // exit if no index provided
+    // if (!index) {
+    //   console.log('please input index');
+    //   return null;
+    // }
+    
+    // loop through
+    tempNode = this.head;
+    
+    console.log('index:', index);
+    
+
+    let parent = null;
+    for (let i = 0; i <= index; i++) {
+      parent = tempNode;
+      tempNode = tempNode.next;
+      console.log('ITER:', i, parent);
+    }
+    
+    return parent;
+  }
 
   print() {
     let count = 0;
@@ -114,12 +151,17 @@ function main() {
   // console.log('GetLast:', LL.getLast());  
   // LL.removeFirst();
   
-  LL.print();  
-  LL.removeLast();
-  LL.print();
+  // LL.print();  
+  // LL.removeLast();
+  // LL.print();
   // console.log(JSON.stringify(LL));
   
-  LL.clear();
+  // LL.clear();
+
+  LL.getAt(1);
+
+  LL.print();
+  
 }
 main();
 

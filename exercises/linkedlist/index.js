@@ -16,6 +16,9 @@ class LinkedList {
 
   insertFirst(record) {
     // console.log('HEAD:', this.head, 'DATA:', record);
+    // if (this.head === null) {
+    //   this.head = new Node(record, null);      
+    // }
     this.head = new Node(record, this.head);
   }
 
@@ -94,7 +97,7 @@ class LinkedList {
     
     // exit if index out of bounds
     if (index < 0 || index >= count) {
-      console.log('index is out of bounds');
+      console.log('WARNING: Index is out of bounds');
       return false;
     } else {
       return true;
@@ -128,7 +131,7 @@ class LinkedList {
     let tempNode;
     if (index === 0) {
       this.head = this.head.next;
-    } else if (index === this.size(this.head) - 1 ) {
+    } else if (index === (this.size(this.head) - 1)) {
       // if last in list, set previous next to null    
       tempNode = this.getAt(index - 1);
       tempNode.next = null;
@@ -140,8 +143,31 @@ class LinkedList {
     }
   }
 
+  insertAt(record, index) {
+    // record not provided
+    if (!record) {
+      console.log('Please enter record');
+      return null;
+    }
+
+    let tempNode;
+    let parent = null;
+    
+    // if 1st in list, set node next to head
+    if (index <= 0) {
+      this.insertFirst(record);
+    } else if (index >= this.size(this.head)) {
+        console.log('INDEX OVER', this.size(this.head));
+        this.insertLast(record);
+    } else {
+      tempNode = this.getAt(index - 1);
+      parent = tempNode.next;
+      tempNode.next = new Node(record, parent);
+    }
+  }
+
   print() {
-    let count = 0;
+    let count = -1;
     let tempNode = this.head;
     while (tempNode) {
       count++;
@@ -176,9 +202,10 @@ function main() {
 
   console.log(LL.size());
   
+  // LL.removeAt(1);
 
   LL.print();
-  LL.removeAt(1);
+  LL.insertAt('Bye Bye Bye', 30)
   LL.print();
 
   

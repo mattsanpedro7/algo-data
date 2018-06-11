@@ -24,7 +24,7 @@ function reverse(str) {
   console.log(result);
   
   return result;
-  ;
+  
 }
 
 reverse('Whatup!');

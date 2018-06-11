@@ -26,11 +26,11 @@ function vowels(str) {
   return count;  
 }
 
-// solution # 2: alternative solution
-function vowels(str) {
-  const matches = str.match(/[aeiou]/gi);
-  return matches ? matches.length : 0;
-}
+// // solution # 2: alternative solution
+// function vowels(str) {
+//   const matches = str.match(/[aeiou]/gi);
+//   return matches ? matches.length : 0;
+// }
 
 vowels('Why do you ask?');
 

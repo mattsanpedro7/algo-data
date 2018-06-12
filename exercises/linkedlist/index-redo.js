@@ -60,8 +60,33 @@ class LinkedList {
         tempNode = tempNode.next;
       }
     }
+  
     // console.log('REMOVELAST:', tempNode);
     tempNode.next = null;
+  }
+
+  size() {
+    let count = 0;
+    let tempNode = this.head;
+
+    while (tempNode.next) {
+      count++;
+      tempNode = tempNode.next;
+    }
+
+    return count;
+  }
+
+  clear() {
+    this.head = null;
+  }
+
+  isIndexIn(index) {
+
+  }
+
+  getAt(index) {
+
   }
 
   print() {
@@ -88,11 +113,15 @@ function main() {
   
   console.log('GetFirst:', LL.getFirst());
   console.log('GetLast:', LL.getLast());  
+
+  console.log('SIZE', LL.size());
+  
   // LL.removeFirst();
   
-  LL.print();  
-  LL.removeLast();
-  LL.print();
+  // LL.print();  
+  // LL.removeLast();
+  // LL.print();
+
   // console.log(JSON.stringify(LL));
   
   // LL.clear();
@@ -105,7 +134,7 @@ function main() {
 
   // LL.print();
   // LL.insertAt('Bye Bye Bye', 30)
-  // LL.print();
+  LL.print();
 }
 main();
 

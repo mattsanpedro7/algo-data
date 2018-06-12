@@ -32,12 +32,36 @@ class LinkedList {
   }
 
   getLast() {
+    if (!this.head) {
+      return null;
+    }
     let tempNode = this.head;
     while (tempNode.next) {
       tempNode = tempNode.next;
     }
     // console.log(tempNode);
     return tempNode;
+  }
+
+  removeFirst() {
+    this.head = this.head.next;
+  }
+
+  removeLast() {
+    let tempNode = this.head;
+    // edge case: if nothing exists
+    if (!this.head) {
+      return null;
+    // edge case: if only one item
+    } else if (!tempNode.next) {
+      this.head = null;
+    } else {
+      while (tempNode.next.next) {
+        tempNode = tempNode.next;
+      }
+    }
+    // console.log('REMOVELAST:', tempNode);
+    tempNode.next = null;
   }
 
   print() {
@@ -66,9 +90,9 @@ function main() {
   console.log('GetLast:', LL.getLast());  
   // LL.removeFirst();
   
-  // LL.print();  
-  // LL.removeLast();
-  // LL.print();
+  LL.print();  
+  LL.removeLast();
+  LL.print();
   // console.log(JSON.stringify(LL));
   
   // LL.clear();
@@ -81,7 +105,7 @@ function main() {
 
   // LL.print();
   // LL.insertAt('Bye Bye Bye', 30)
-  LL.print();
+  // LL.print();
 }
 main();
 

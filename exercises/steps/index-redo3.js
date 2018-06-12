@@ -17,53 +17,41 @@
 //       '### '
 //       '####'
 
-// // my solution
+// solution # 1: author recursion
 // function steps(n) {
-//   if (n < 0) {
-//     console.log('Please input a positive number.');
-//     return;
-//   }
-//   for (let i = 1; i <= n; i++) {
-//     console.log('#'.repeat(i) + ' '.repeat(n - i));
-//   }
-// }
-
-// // solution # 1: author iterative
-// function steps(n) {
-//   for (let row = 0; row < n; row++) {
-//     let stair = '';
-
-//     for (let column = 0; column < n; column++) {
-//       if (column <= row) {
-//         stair += '#';
-//       } else {
-//         stair += ' ';
-//       }
-//     }
+//   for (let i = 0; i < n; i++) {
+//       let stair = '';
+//       for (let j = 0; j < n; j++) {
+//         if (j <= i) {
+//             stair += '#';
+//         } else {
+//             stair += ' ';
+//         }
+//     } 
 
 //     console.log(stair);
-    
 //   }
 // }
 
-// solution # 1: author recursion
+// sultion # 2: recursion
 function steps(n, row = 0, stair = '') {
-  // base case
+  // console.log('hi');
+  
   if (n === row) {
-    return; 
+    return;
   }
- 
+
   if (n === stair.length) {
     console.log(stair);
-    return steps(n, row + 1)
+    return steps(n, row + 1);
   }
-  
+
   if (stair.length <= row) {
     stair += '#';
   } else {
     stair += ' ';
   }
-  
+
   steps(n, row, stair);
 }
 

@@ -9,43 +9,22 @@
 
 // solution # 1: my solution
 function capitalize(str) {
-  const arr = str.split('');
-  let words = [];
-  for (let char in arr) {
-    if (!arr[char-1] || arr[char-1] === ' ') {
-      words.push(arr[char].toUpperCase());
+  const words = str.split('');
+//   console.log(words);
+  let result = [];
+  
+  for (let i = 0; i < words.length; i++) {
+    if (!words[i-1] || words[i-1] === ' ') {
+        // console.log(words[i]);
+        result.push(words[i].toUpperCase());
     } else {
-      words.push(arr[char]);
+        result.push(words[i]);
     }
   }
 
-  return (words.join(''));
+  console.log(result.join(''));
+  return result.join('');
 }
-
-// // solution # 1: author solution
-// function capitalize(str) {
-//   const words = [];
-
-//   for (let word of str.split(' ')) {
-//     words.push(word[0].toUpperCase() + word.slice(1));
-//   }
-//   return (words.join(' '));
-  
-// }
-
-// // solution # 2: author solution
-// function capitalize(str) {
-//   let result = str[0].toUpperCase();
-
-//   for (let i = 1; i < str.length; i++) {
-//     (str[i-1] === ' ') 
-//       ? result += (str[i].toUpperCase())
-//       : result += (str[i]);
-//   }
-
-//   return result;
-  
-// }
 
 console.log((capitalize('a short sentence?'))); 
 

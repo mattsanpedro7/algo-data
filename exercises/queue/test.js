@@ -1,4 +1,4 @@
-const Queue = require('./index');
+const Queue = require('./index-redo');
 
 test('Queue is a class', () => {
   expect(typeof Queue.prototype.constructor).toEqual('function');

@@ -1,4 +1,4 @@
-const midpoint = require('./index');
+const midpoint = require('./index-redo');
 const L = require('./linkedlist');
 const Node = L.Node;
 const LinkedList = L.LinkedList;

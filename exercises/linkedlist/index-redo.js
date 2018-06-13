@@ -69,7 +69,7 @@ class LinkedList {
     let count = 0;
     let tempNode = this.head;
 
-    while (tempNode.next) {
+    while (tempNode) {
       count++;
       tempNode = tempNode.next;
     }
@@ -82,7 +82,13 @@ class LinkedList {
   }
 
   isIndexIn(index) {
-
+    // console.log(this.size());
+    
+    if (index < 0 || index > this.size()) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   getAt(index) {
@@ -135,6 +141,7 @@ function main() {
   // LL.print();
   // LL.insertAt('Bye Bye Bye', 30)
   LL.print();
+  LL.isIndexIn();
 }
 main();
 

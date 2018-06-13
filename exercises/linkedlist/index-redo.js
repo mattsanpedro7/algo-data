@@ -82,9 +82,7 @@ class LinkedList {
   }
 
   isIndexIn(index) {
-    // console.log(this.size());
-    
-    if (index < 0 || index > this.size()) {
+    if (index < 0 || index >= this.size()) {
       return false;
     } else {
       return true;
@@ -92,12 +90,68 @@ class LinkedList {
   }
 
   getAt(index) {
+    if (!this.isIndexIn()) {
+      return null;
+    }
 
+    let tempNode = this.head;
+
+    for (let i = 0; i < index; i++) {
+      tempNode = tempNode.next;
+    }
+
+    console.log(tempNode);
+    
+  }
+
+  removeAt(index) {
+    if (!this.isIndexIn(index)) {
+      return null;
+    }
+
+    if (index === 0) {
+      this.removeFirst();
+    } else if (index === this.size()-1) {
+      this.removeLast();
+    } else {
+      let tempNode = this.head;
+      for (let i = 0; i < index-1; i++) {
+        tempNode = tempNode.next;
+      }
+      tempNode.next = tempNode.next.next;
+    }
+
+    // console.log(tempNode);
+  }
+
+  insertAt(record, index) {
+    if (index < 0) {
+      index = 0;
+    } else if (index >= this.size()) {
+      index = this.size();
+    }
+   
+    if (index === 0) {
+      this.insertFirst(record);
+    } 
+    // else if (index === this.size()-1) {
+    //   this.insertLast(record);
+    // } 
+    else {
+      let tempNode = this.head;
+
+      for (let i = 0; i < index-1; i++) {
+        tempNode = tempNode.next;
+      }
+      const tempNext = tempNode.next; 
+      // console.log(tempNode);
+      tempNode.next = new Node(record, tempNext);
+    }
   }
 
   print() {
     let tempNode = this.head;
-    let count = 0;
+    let count = -1;
     console.log('PRINTING');
     
     while (tempNode) {
@@ -117,10 +171,10 @@ function main() {
   LL.insertLast('Fine thank you');
   LL.insertLast('b');
   
-  console.log('GetFirst:', LL.getFirst());
-  console.log('GetLast:', LL.getLast());  
+  // console.log('GetFirst:', LL.getFirst());
+  // console.log('GetLast:', LL.getLast());  
 
-  console.log('SIZE', LL.size());
+  // console.log('SIZE', LL.size());
   
   // LL.removeFirst();
   
@@ -132,17 +186,19 @@ function main() {
   
   // LL.clear();
 
-  // LL.getAt(2);
+  // LL.getAt(3);
 
   // console.log(LL.size());
   
-  // LL.removeAt(1);
-
   // LL.print();
-  // LL.insertAt('Bye Bye Bye', 30)
+  // LL.removeAt(0);
+  // LL.print();
+
   LL.print();
-  LL.isIndexIn();
+  LL.insertAt('Bye Bye Bye', 30)
+  LL.print();
 }
+
 main();
 
 module.exports = { Node, LinkedList };

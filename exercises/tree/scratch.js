@@ -5,3 +5,7 @@ arr = arr.filter(element => {
 });
 
 console.log(arr);
+
+arr.shift();
+
+console.log(arr);
